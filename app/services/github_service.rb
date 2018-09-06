@@ -1,17 +1,20 @@
 class GithubService
   require 'json'
 
+  attr_accessor :language
 
-  def init
 
+  def initialize(language)
+    self.language = language
   end
 
-  def self.get_repository
-    uri_local =  'https://api.github.com/search/repositories?q=language:ruby&sort=stars&order=desc'
+  def self.repository_by_language(language)
+    uri_local = "https://api.github.com/search/repositories?q=language:#{language}&sort=stars&order=desc"
     uri = URI(uri_local)
     res = Net::HTTP.get(uri)
     parsed_response = JSON.parse(res)
-    puts  parsed_response
+    puts  parsed_response['items'][0]
+    parsed_response['items']
   end
 
 end
