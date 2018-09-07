@@ -2,8 +2,8 @@ class Repository < ApplicationRecord
 
   validates :language, presence: true
   validates :full_name, presence: true
-  validates :html_url, presence: true
-  validates :stargazers_count, presence: true
+  validates :repo_url, presence: true
+  validates :repo_stars, presence: true
 
 
   def self.save_repositories(items, lang)
