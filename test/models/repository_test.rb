@@ -73,11 +73,11 @@ class RepositoryTest < ActiveSupport::TestCase
     assert_not Repository.get_new_repositories('')
   end
 
-  # test "repository should save new repositories from github API" do
-  #   Repository.get_new_repositories('ruby')
-  #   repos = Repository.where(language: 'ruby')
-  #   assert repos.count > 1
-  # end
+   test "repository should save new repositories from github API" do
+     Repository.get_new_repositories('ruby')
+     repos = Repository.where(language: 'ruby')
+     assert repos.count > 1
+   end
 
 
 end
