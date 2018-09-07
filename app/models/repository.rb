@@ -1,6 +1,7 @@
 class Repository < ApplicationRecord
 
   validates :language, presence: true
+  validates :name, presence: true
   validates :full_name, presence: true
   validates :repo_url, presence: true
   validates :repo_stars, presence: true
@@ -21,6 +22,7 @@ class Repository < ApplicationRecord
   end
 
   def self.get_new_repositories(language)
+    return false if language.empty?
     items = GithubService.repository_by_language(language)
     self.save_repositories(items, language)
   end

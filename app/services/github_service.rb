@@ -9,6 +9,7 @@ class GithubService
   end
 
   def self.repository_by_language(language)
+    return false if language.empty?
     uri_local = "https://api.github.com/search/repositories?q=language:#{language}&sort=stars&order=desc"
     uri = URI(uri_local)
     res = Net::HTTP.get(uri)

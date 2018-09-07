@@ -59,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: octo_events_api_test
+  database: github_finder_test
   username: postgres
   password: jian199834
   host: localhost
@@ -85,6 +85,6 @@ test:
 #
 production:
   <<: *default
-  database: octo_events_api_production
+  database: github_finder_prod
   username: postgresql
   password: 'jian19834'
