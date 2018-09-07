@@ -1,0 +1,14 @@
+   <% @repositories.each do |repository| %>
+    
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong><%= repository.name %> <i class='glyphicon glyphicon-star'></i><%= repository.repo_stars %></strong></div>
+            <div class="panel-body">
+                Nome do repositório: <%= repository.full_name %></br>
+                Link do repositório: <a href="<%= repository.repo_url%>"><%= repository.repo_url%></a></br>
+                Nome do repositório: <%= repository.full_name %></br>
+                Descrição do repositório
+
+            </div>
+        </div>
+
+    <%end%>

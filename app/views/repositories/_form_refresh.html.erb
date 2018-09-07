@@ -1,0 +1,5 @@
+  <%= form_tag('/repositories', method: :get) do -%>
+    <%= hidden_field_tag 'refresh', 'true'%>
+    <%= hidden_field_tag 'lang', params[:lang] if params[:lang].present?%>
+    <%= submit_tag 'Atualizar Repositórios', class: 'btn btn-success' %>
+<% end -%></br>

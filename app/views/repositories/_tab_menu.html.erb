@@ -1,0 +1,5 @@
+ <ul class="nav nav-tabs">
+    <% Repository.languages.each do |language|%>
+        <li role="presentation" class='<%= 'active' if params[:lang].eql?(language)%>' >  <a href="<%= "/repositories?lang=#{language}" %>"><%= language.upcase  %></a></li>
+    <%end%>       
+</ul></br>
