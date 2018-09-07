@@ -1,25 +1,32 @@
 <div class='container'>
     <h1> Repositórios: </h1>
-    <button class='btn btn-primary'>Olá </button>
+    
+    <%= form_tag('/repositories', method: :get) do -%>
+        <%= hidden_field_tag 'refresh', 'true'%>
+        <%= hidden_field_tag 'lang', params[:lang] if params[:lang].present?%>
+        <%= submit_tag 'Atualizar Repositórios', class: 'btn btn-success' %>
+    <% end -%></br>
+
+    <ul class="nav nav-tabs">
+        <% Repository.languages.each do |language|%>
+            <li role="presentation" class='<%= 'active' if params[:lang].eql?(language)%>' >  <a href="<%= "/repositories?lang=#{language}" %>"><%= language.upcase  %></a></li>
+        <%end%>       
+    </ul></br>
 
     <% @repositories.each do |repository| %>
-        <%= repository.name %>
-    <%end%>
-    <div class="panel panel-default">
-        <div class="panel-heading">Panel heading without title</div>
-        <div class="panel-body">
-            Panel content
-        </div>
-    </div>
+    
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong><%= repository.name %> <i class='glyphicon glyphicon-star'></i><%= repository.repo_stars %></strong></div>
+            <div class="panel-body">
+                Nome do repositório: <%= repository.full_name %></br>
+                Link do repositório: <a href="<%= repository.repo_url%>"><%= repository.repo_url%></a></br>
+                Nome do repositório: <%= repository.full_name %></br>
+                Descrição do repositório
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Panel title</h3>
+            </div>
         </div>
-        <div class="panel-body">
-            Panel content
-        </div>
-    </div>
+
+    <%end%>
 
 
 </div>
