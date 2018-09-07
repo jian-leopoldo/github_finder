@@ -13,7 +13,7 @@ class Repository < ApplicationRecord
 
   def self.search_by_lang(language, refresh_repo=false)
     repos = Repository.where(language: language)
-    self.get_new_repositories(language) if refresh_repo
+    self.get_new_repositories(language) if refresh_repo || !repos.present?
     repos
   end
 
@@ -23,7 +23,7 @@ class Repository < ApplicationRecord
 
   def self.get_new_repositories(language)
     return false if language.empty?
-    items = GithubService.repository_by_language(language)
+    items = GithubService.repositories_by_language(language)
     self.save_repositories(items, language)
   end
 
